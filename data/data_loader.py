@@ -3,7 +3,7 @@ import pandas as pd
 from pathlib import Path
 # ------------------- BASE DATA -------------------
 
-DATA_PATH = Path("data/ardiin_erh_code_grouped_combined.pqt")
+# DATA_PATH = Path("data/ardiin_erh_code_grouped_combined.pqt")
 LOOKUP_PATH = Path("data/loyalty_lookup_2.csv")
 
 @st.cache_resource(show_spinner=True)
@@ -12,7 +12,18 @@ def load_data() -> pd.DataFrame:
     Load the main parquet ONCE as a resource (best for big data).
     Reduce columns early to save RAM.
     """
-    df = pd.read_parquet(DATA_PATH)
+
+    files = [
+        'ardiin_erh_part_1.pqt',
+        'ardiin_erh_part_2.pqt',
+        'ardiin_erh_part_3.pqt',
+        'ardiin_erh_part_4.pqt',
+        'ardiin_erh_part_5.pqt'
+    ]
+
+    df = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
+
+
 
     # Keep only columns used across your pages (reduce RAM)
     keep_cols = [
