@@ -17,9 +17,9 @@ pages = {
     "Санал": [
         st.Page("page5.py", title="RDX ХӨНГӨЛӨЛТИЙН САНАЛ"),
     ],
-    "Урамшуулал": [
-        st.Page("bonus.py", title="ADB 15/7"),
-    ],
+    # "Урамшуулал": [
+    #     st.Page("bonus.py", title="ADB 15/7"),
+    # ],
 }
 
 pg = st.navigation(pages)

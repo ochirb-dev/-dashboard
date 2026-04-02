@@ -14,11 +14,11 @@ def load_data() -> pd.DataFrame:
     """
 
     files = [
-        'ardiin_erh_part_1.pqt',
-        'ardiin_erh_part_2.pqt',
-        'ardiin_erh_part_3.pqt',
-        'ardiin_erh_part_4.pqt',
-        'ardiin_erh_part_5.pqt'
+        'data/ardiin_erh_part_1.pqt',
+        'data/ardiin_erh_part_2.pqt',
+        'data/ardiin_erh_part_3.pqt',
+        'data/ardiin_erh_part_4.pqt',
+        'data/ardiin_erh_part_5.pqt'
     ]
 
     df = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
