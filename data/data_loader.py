@@ -13,15 +13,19 @@ def load_data() -> pd.DataFrame:
     Reduce columns early to save RAM.
     """
 
-    files = [
-        'data/ardiin_erh_part_1.pqt',
-        'data/ardiin_erh_part_2.pqt',
-        'data/ardiin_erh_part_3.pqt',
-        'data/ardiin_erh_part_4.pqt',
-        'data/ardiin_erh_part_5.pqt'
-    ]
+    file_path = "data.pqt"
 
-    df = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
+    # буруу жижиг файл байвал устгана
+    if os.path.exists(file_path) and os.path.getsize(file_path) < 1_000_000:
+        os.remove(file_path)
+
+    if not os.path.exists(file_path):
+        file_id = "1mctLol_ZXw9I7ZhAK3h4M4kvF4YJSXfP"
+        url = f"https://drive.google.com/uc?id={file_id}"
+
+        gdown.download(url, file_path, quiet=False)
+
+    df = pd.read_parquet(file_path)
 
 
 
